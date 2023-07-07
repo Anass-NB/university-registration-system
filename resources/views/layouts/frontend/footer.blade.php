@@ -51,13 +51,14 @@
             <h2 class="footer-title">Contact </h2>
             <div class="footer-contact-info">
               <div class="footer-address">
-                <p> 1234 Mghila Street, Benni Mellal ,<br> Fquih Ben Salaha, MAROC 23200 </p>
+                <p> Hay Tighnari, Route nationale N11 de Casablanca commune de Fkih Ben Salah, <br> Boite Postale 336
+                </p>
               </div>
               <p>
-                +212 434 5465
+                05 23 43 46 66 - 05 23 43 49 99
               </p>
               <p class="mb-0">
-                usms@example.com
+                estfbs@usms.ma
               </p>
             </div>
           </div>
@@ -77,7 +78,9 @@
         <div class="row">
           <div class="col-md-6">
             <div class="copyright-text">
-              <p class="mb-0">&copy; 2023 USMS. <span style="color: #FF9800;">Créé par Anass Nabil & Soufiane EL Jadi
+              <p class="mb-0">&copy; 2023 EST-FBS . <span style="color: #FF9800;">Créé par Anass Nabil & Soufiane
+                  EL
+                  Jadi
                 </span>
               </p>
             </div>

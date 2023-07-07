@@ -116,9 +116,11 @@
         <!-- User Menu -->
         <li class="nav-item dropdown has-arrow">
           <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-            <span class="user-img"><img class="rounded-circle"
+            <span class="user-img">
+              <img class="rounded-circle" draggable="false"
                 src="{{ isset(auth()->user()->photo) ? asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->photo) : asset('assets/img/graduated.png') }}"
-                width="31" alt="Ryan Taylor"></span>
+                width="31" alt="profile">
+            </span>
           </a>
           <div class="dropdown-menu">
             <div class="user-header">
@@ -127,7 +129,7 @@
                 {{-- <img
                   src="{{ asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->photo) }}"
                   alt="User Image" class="avatar-img rounded-circle"> --}}
-                <img
+                <img draggable="false"
                   src="{{ isset(auth()->user()->photo) ? asset('storage/documents/' . auth()->user()->code_massar . '/' . auth()->user()->photo) : asset('assets/img/graduated.png') }}"
                   alt="User Image" class="avatar-img rounded-circle">
               </div>

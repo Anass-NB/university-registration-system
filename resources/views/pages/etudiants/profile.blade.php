@@ -68,8 +68,8 @@
 
 
 
-        <div>
-          <p>Profile completion: </p>
+        <div style="display: flex">
+          <p style="margin-right: 20px">Achèvement du profil : </p>
           <div class="col-md-6">
             <div class="my-2 progress progress-md">
               <div class="progress-bar bg-{{ auth()->user()->profileCompletionColor() }}" role="progressbar"
@@ -272,16 +272,16 @@
                 <div class="col-lg-9">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="sexe" id="gender_male" value="1"
-                      {{ auth()->user()->sexe == 1 || old('sexe') == 1 ? 'checked' : '' }}>
+                      {{ auth()->user()->sexe === 1 || old('sexe') === 1 ? 'checked' : '' }}>
                     <label class="form-check-label" for="gender_male">
-                      Male
+                      Homme
                     </label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="sexe" id="gender_female" value="0"
-                      {{ auth()->user()->sexe == 0 || old('sexe') == 0 ? 'checked' : '' }}>
+                      {{ auth()->user()->sexe === 0 || old('sexe') === 0 ? 'checked' : '' }}>
                     <label class="form-check-label" for="gender_female">
-                      Female
+                      Femme
                     </label>
                   </div>
                 </div>
@@ -293,14 +293,18 @@
             <div class="col-12 col-md-6 col-xl-2">
               <div class="form-group">
                 <label>Téléphone </label>
-                <input placeholder="0612345678" type="text"
-                  class="form-control @error('telephone') is-invalid @enderror" name="telephone"
-                  value="{{ old('telephone', auth()->user()->telephone) }}">
-                @error('telephone')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                @enderror
+
+                <div class="input-group">
+                  <span class="input-group-text" id="basic-addon1">+212</span>
+                  <input placeholder="612345678" type="text"
+                    class="form-control @error('telephone') is-invalid @enderror" name="telephone"
+                    value="{{ old('telephone', auth()->user()->telephone) }}">
+                  @error('telephone')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
+                </div>
               </div>
             </div>
 
@@ -308,7 +312,7 @@
               <div class="form-group">
                 <label>Email </label>
                 <input type="text" class="form-control @error('email') is-invalid @enderror" name="email"
-                  value="{{ old('email', auth()->user()->email) }}">
+                  disabled value="{{ old('email', auth()->user()->email) }}">
                 @error('email')
                   <div class="invalid-feedback">
                     {{ $message }}
@@ -409,14 +413,14 @@
                 <div class="col-lg-9">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="fonctionnaire" id="oui" value="1"
-                      {{ auth()->user()->fonctionnaire || old('fonctionnaire') == 1 ? 'checked' : '' }}>
+                      {{ auth()->user()->fonctionnaire === 1 || old('fonctionnaire') === 1 ? 'checked' : '' }}>
                     <label class="form-check-label" for="oui">
                       Oui
                     </label>
                   </div>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="fonctionnaire" id="no" value="0"
-                      {{ auth()->user()->fonctionnaire || old('fonctionnaire') == 0 ? 'checked' : '' }}>
+                      {{ auth()->user()->fonctionnaire === 0 || old('fonctionnaire') === 0 ? 'checked' : '' }}>
                     <label class="form-check-label" for="no">
                       Non
                     </label>
@@ -677,7 +681,7 @@
               <div class="form-group">
                 <label>Note du diplôme</label>
                 <input required type="text" class="form-control @error('moyenne_diplome') is-invalid @enderror"
-                  name="moyenne_diplome"
+                  name="moyenne_diplome" placeholder="EX: 16.58"
                   value="{{ old('moyenne_diplome', auth()->user()->dossier->moyenne_diplome) }}">
                 @error('moyenne_diplome')
                   <div class="invalid-feedback">
@@ -716,7 +720,7 @@
               <div class="form-group">
                 <label>Specialité du diplôme </label>
                 <input required type="text" class="form-control @error('specialite_diplome') is-invalid @enderror"
-                  name="specialite_diplome"
+                  name="specialite_diplome" placeholder="Ex : Génie informatique"
                   value="{{ old('specialite_diplome', auth()->user()->dossier->specialite_diplome) }}">
                 @error('specialite_diplome')
                   <div class="invalid-feedback">

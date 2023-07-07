@@ -76,7 +76,7 @@ class EtudiantController extends Controller
     $student->province_naissance = $request->province_naissance;
     $student->code_massar = $request->code_massar;
     $student->cin = $request->cin;
-    $student->telephone = $request->telephone;
+    $student->telephone ="+212".$request->telephone;
     $student->ville = $request->ville;
     $student->sexe = $request->sexe;
     $student->nom_ar = $request->nom_ar;
@@ -86,7 +86,7 @@ class EtudiantController extends Controller
     $student->adresse_perso1 = $request->adresse_perso1;
     $student->situation_familiale = $request->situation_familiale;
     $student->pays = $request->pays;
-    $student->email = $request->email;
+    $student->email = auth()->user()->email;
     $student->fonctionnaire = $request->fonctionnaire;
     if ($request->hasFile('photo')) {
       $name = $this->uploadDocument($request,"photo","photo",$request->code_massar);
