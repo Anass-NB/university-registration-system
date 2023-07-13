@@ -45,7 +45,7 @@
   <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
     <i class="fa-solid fa-arrow-right-to-bracket me-2"></i>Après avoir remplir votre <u><a
         href="{{ route('etudiant.profile') }}" class="alert-link">profile</a></u> vous pouvez postuler a une ou plusieurs
-    formations disponibles: via lien (<u><a href="#" class="alert-link">Formations</a></u>)
+    formations disponibles: via lien (<u><a href="{{ route('avislicencespro') }}" class="alert-link">Formations</a></u>)
   </div>
 
 

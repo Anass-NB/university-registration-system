@@ -119,11 +119,18 @@ class CandidatureController extends Controller
    */
   public function create(Request $request)
   {
-    $candidature = new Candidature();
-    $candidature->etudiant_id = auth()->id();
-    $candidature->formation_id = $request->formation_id;
-    $candidature->save();
-    return redirect()->route("etudiant.dashboard");
+    $exist = Candidature::where("etudiant_id",auth()->id())
+    ->where("formation_id",$request->formation_id)->first();
+    if(!$exist){
+      $candidature = new Candidature();
+      $candidature->etudiant_id = auth()->id();
+      $candidature->formation_id = $request->formation_id;
+      $candidature->save();
+      return redirect()->route("etudiant.dashboard");
+    }
+    else{
+      return redirect()->route("candidatures.list");
+    }
   }
 
   /**

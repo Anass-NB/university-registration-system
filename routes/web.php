@@ -28,6 +28,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
   return view('pages.frontend.index');
 });
+Route::get('/forget', function () {
+  return view('auth.forgot-password');
+});
 
 
 //! Etudiants routes

@@ -76,7 +76,7 @@ class EtudiantController extends Controller
     $student->province_naissance = $request->province_naissance;
     $student->code_massar = $request->code_massar;
     $student->cin = $request->cin;
-    $student->telephone ="+212".$request->telephone;
+    $student->telephone =$request->telephone;
     $student->ville = $request->ville;
     $student->sexe = $request->sexe;
     $student->nom_ar = $request->nom_ar;
@@ -219,7 +219,8 @@ class EtudiantController extends Controller
   {
     $villes = Ville::all();
     return view("pages.admin.etudiants.index")->with([
-      "etudiants" => Etudiant::all(), "villes" => $villes,
+      "etudiants" => Etudiant::paginate(20),
+      "villes" => $villes,
     ]);
   }
 }

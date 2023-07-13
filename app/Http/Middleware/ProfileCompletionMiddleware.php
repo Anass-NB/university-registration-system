@@ -16,7 +16,7 @@ class ProfileCompletionMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (auth()->user()->profileCompletionPercentage() < 100) {
-          return redirect()->route("etudiant.profile")->with('errorCompleteProfile', 'Merci de compléter votre profil avant de postuler a une formation unversitaire.');
+          return redirect()->route("etudiant.profile")->with('errorCompleteProfile', 'Merci de compléter votre profile avant de postuler a une formation universitaire.');
 
         }
 

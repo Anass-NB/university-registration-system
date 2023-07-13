@@ -84,7 +84,7 @@
                         </div>
                         <div class="modal-body">
                           <div>
-                            Êtes-vous sûr de supprimer la candidature : <br>{{ $candidature->formation->nom }}
+                            <p> Êtes-vous sûr de supprimer la candidature : <br>{{ $candidature->formation->nom }}</p>
                           </div>
                         </div>
                         <div class="modal-footer">
@@ -97,8 +97,10 @@
                           </form>
                         </div>
                       </div>
+
                     </div>
                   </div>
+
                 @empty
                   <td colspan="4" class="text-danger">Accune Candidature </td>
                 @endforelse
@@ -111,6 +113,7 @@
 
     </div>
   </div>
+
 
   <!-- /Page Wrapper -->
 

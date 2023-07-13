@@ -503,23 +503,27 @@
                 <label>Série du bac </label>
                 <select class="form-control @error('serie_bac') is-invalid @enderror" name="serie_bac">
                   <option disabled selected> Sélectionner un type</option>
-                  <option {{ auth()->user()->dossier->serie_bac || old('serie_bac') == 'sma' ? 'selected' : '' }}
+                  <option
+                    {{ auth()->user()->dossier->serie_bac == 'sma' || old('serie_bac') == 'sma' ? 'selected' : '' }}
                     value="sma">Science
                     Math A
                   </option>
-                  <option {{ auth()->user()->dossier->serie_bac || old('serie_bac') == 'smb' ? 'selected' : '' }}
+                  <option
+                    {{ auth()->user()->dossier->serie_bac == 'smb' || old('serie_bac') == 'smb' ? 'selected' : '' }}
                     value="smb">Science
                     Math B
                   </option>
-                  <option {{ auth()->user()->dossier->serie_bac || old('serie_bac') == 'pc' ? 'selected' : '' }}
+                  <option {{ auth()->user()->dossier->serie_bac == 'pc' || old('serie_bac') == 'pc' ? 'selected' : '' }}
                     value="pc">Science
                     Physiques
                   </option>
-                  <option {{ auth()->user()->dossier->serie_bac || old('serie_bac') == 'svt' ? 'selected' : '' }}
+                  <option
+                    {{ auth()->user()->dossier->serie_bac == 'svt' || old('serie_bac') == 'svt' ? 'selected' : '' }}
                     value="svt">Science vie
                     et terre
                   </option>
-                  <option {{ auth()->user()->dossier->serie_bac || old('serie_bac') == 'autre' ? 'selected' : '' }}
+                  <option
+                    {{ auth()->user()->dossier->serie_bac == 'autre' || old('serie_bac') == 'autre' ? 'selected' : '' }}
                     value="autre">Autre
                   </option>
                 </select>
@@ -550,20 +554,24 @@
                 <select class="form-control @error('mention_bac') is-invalid @enderror"name="mention_bac">
                   <option selected> Sélectionner la mention</option>
                   <option
-                    {{ auth()->user()->dossier->mention_bac == '1' || old('mention_bac') == '1' ? 'selected' : '' }}
-                    value="1">Très Bien
+                    {{ auth()->user()->dossier->mention_bac === 'Excellent' || old('mention_bac') === 'Excellent' ? 'selected' : '' }}
+                    value="Excellent">Excellent
                   </option>
                   <option
-                    {{ auth()->user()->dossier->mention_bac == '2' || old('mention_bac') == '2' ? 'selected' : '' }}
-                    value="2">Bien
+                    {{ auth()->user()->dossier->mention_bac == 'T.Bien' || old('mention_bac') == 'T.Bien' ? 'selected' : '' }}
+                    value="T.Bien">Très Bien
                   </option>
                   <option
-                    {{ auth()->user()->dossier->mention_bac == '3' || old('mention_bac') == '3' ? 'selected' : '' }}
-                    value="3">Assez Bien
+                    {{ auth()->user()->dossier->mention_bac == 'Bien' || old('mention_bac') == 'Bien' ? 'selected' : '' }}
+                    value="Bien">Bien
                   </option>
                   <option
-                    {{ auth()->user()->dossier->mention_bac == '4' || old('mention_bac') == '4' ? 'selected' : '' }}
-                    value="4">Passable
+                    {{ auth()->user()->dossier->mention_bac == 'A.Bien' || old('mention_bac') == 'A.Bien' ? 'selected' : '' }}
+                    value="A.Bien">Assez Bien
+                  </option>
+                  <option
+                    {{ auth()->user()->dossier->mention_bac == 'Passable' || old('mention_bac') == 'Passable' ? 'selected' : '' }}
+                    value="Passable">Passable
                   </option>
                 </select>
                 @error('mention_bac')
