@@ -38,10 +38,10 @@ This repository contains the source code of a web application for registering fo
 ```git clone https://github.com/soufianeljadi/restaurant-project ```
 
 2. Navigate to the project directory:
-```cd restaurant-project```
+```cd precandidature-pfe```
 
 3. Install PHP dependencies via Composer:
-```compose install```
+```composer install```
 
 4. Copy the environment file:
 ```cp .env.example .env```
