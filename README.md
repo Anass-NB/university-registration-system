@@ -71,7 +71,7 @@ Mobile:
 ## Facility
 
 1. Clone the GitHub repository:
-```git clone https://github.com/soufianeljadi/restaurant-project ```
+```git clone https://github.com/Anass-NB/precandidature-pfe.git ```
 
 2. Navigate to the project directory:
 ```cd precandidature-pfe```
