@@ -1,6 +1,6 @@
 # Registration System for University Professional License Courses
 
-A comprehensive web application for managing university professional license course registrations, built with Laravel, PHP, MySQL, and modern frontend technologies.
+A comprehensive web application for managing university professional  course registrations, built with Laravel, PHP, MySQL, and modern frontend technologies.
 
 ## 🚀 Features
 
@@ -80,14 +80,14 @@ npm run dev
 
 1. **Admin Account**
 ```
-Email: admin@admin.com
+Email: amine.abdellah@usms.test
 Password: password
 Role: Administrator
 ```
 
 2. **Teacher Accounts**
 ```
-Email: jean.dupont@education.com
+Email: rachid.ait@usms.test
 Password: password
 Role: Teacher/Enseignant
 Speciality: Informatique
@@ -100,15 +100,15 @@ Speciality: Mathématiques
 
 3. **Student Account**
 ```
-Email: user@user.com
-Password: password
+Email: Create new account
+Password: create new password
 Role: Student
 ```
 
 ### Testing Flow
 
 1. **Admin Testing**
-   - Login using admin@admin.com
+   - Login 
    - Access the admin dashboard
    - Manage formations and teachers
    - View all applications
@@ -116,7 +116,7 @@ Role: Student
    - Generate reports
 
 2. **Teacher Testing**
-   - Login using jean.dupont@education.com or marie.martin@education.com
+   - Login 
    - View assigned formations
    - Review student applications
    - Generate class reports
@@ -141,23 +141,6 @@ The application is fully responsive and works seamlessly on:
 - Tablets
 - Mobile devices
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch
-```bash
-git checkout -b feature/AmazingFeature
-```
-3. Commit your changes
-```bash
-git commit -m 'Add some AmazingFeature'
-```
-4. Push to the branch
-```bash
-git push origin feature/AmazingFeature
-```
-5. Open a Pull Request
-
 ## 👥 Authors
 
 - **EL JADI Soufiane** - [eljadi.souf@gmail.com](mailto:eljadi.souf@gmail.com)
@@ -169,36 +152,34 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📸 Screenshots
 
-### Admin Dashboard
-![Admin Dashboard](public/images/screens/admin.png)
-![Admin Formations](public/images/screens/admin-formations.png)
-![Admin Users](public/images/screens/admin-users.png)
+### Administrator Interface
+![Admin Dashboard](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/cee219fd-3c6a-4359-8e57-475a6926be34)
+![Admin Statistics](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/a4212d21-4205-4b8a-864d-136b250a1e91)
+![Admin Management](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/0e2645da-683c-469d-ad9a-3b26f206ea32)
+![Admin Reports](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/e547ce83-1773-4476-a6b6-0bbdbb29373e)
+![Admin Users](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/2eed3534-dcb1-4c49-b385-3e935969994a)
+![Admin Formations](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/9cb47a5f-a44d-4ea0-8145-aa117540df76)
+![Admin Applications](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/9b967801-4ee0-4530-aa55-ac432e758952)
+![Admin Settings](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/6ef7415f-5a72-4340-8950-14bd6c951a23)
 
 ### Teacher Interface
-![Teacher Dashboard](public/images/screens/teacher.png)
-![Teacher Students](public/images/screens/teacher-students.png)
+![Teacher Dashboard](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/54f0b4eb-b80b-496c-8f72-72004dd012d9)
+![Teacher Students](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/63e44952-3ce7-4f10-baba-ae92a2bfca58)
+![Teacher Reports](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/f3b735a5-b587-4f67-af4a-66cac1895820)
+![Teacher Management](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/7f569ead-fc85-4b72-9007-308d9d6c2408)
 
 ### Student Interface
-![Student Dashboard](public/images/screens/student.png)
-![Student Profile](public/images/screens/student-profile.png)
-![Application Form](public/images/screens/application.png)
+![Student Dashboard](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/12fed1c3-501f-4072-95b3-2a7e86358e90)
+![Student Profile](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/9364cc45-6d60-4753-b25a-d570d190a251)
+![Application Form 1](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/2465129d-57f3-420c-9ad1-669a747daa38)
+![Application Form 2](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/6a5ec99d-45d5-40da-a598-2cbd00ddd654)
+![Application Form 3](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/590a5c3a-a333-44b6-af73-2da67be933fe)
 
-### Authentication Screens
-![Login Page](public/images/screens/login.png)
-![Register Page](public/images/screens/register.png)
-
-### Responsive Design
-![Mobile View](public/images/screens/mobile.png)
-![Tablet View](public/images/screens/tablet.png)
-
-## 🔗 Links
-
-- [Live Demo](your-demo-link)
-- [Documentation](your-docs-link)
-- [Bug Report](your-issues-link)
+### Mobile Interface
+![Mobile View 1](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/1d2a6463-989e-42c3-a74f-8a044bd6c43b)
+![Mobile View 2](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/5b045192-e8a6-4894-853a-125e233c3651)
+![Mobile View 3](https://github.com/Anass-NB/precandidature-pfe/assets/110456240/53c2b952-1c83-4302-91ae-565e66927fb4)
 
 ## 🙏 Acknowledgments
 
-- Laravel Team
-- Bootstrap Team
 - All contributors who helped in this project
