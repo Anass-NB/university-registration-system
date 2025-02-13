@@ -121,17 +121,8 @@ A comprehensive web application for managing university professional course regi
 - Apache/Nginx web server
 - SSL certificate for production
 
-### Supported Browsers
-- Chrome (last 3 versions)
-- Firefox (last 3 versions)
-- Safari (last 2 versions)
-- Edge (last 3 versions)
 
-### Recommended Server Specifications
-- CPU: 2+ cores
-- RAM: 4GB minimum
-- Storage: 20GB minimum
-- Network: 100Mbps minimum
+
 
 ## 🛠 Technologies Used
 
@@ -139,8 +130,6 @@ A comprehensive web application for managing university professional course regi
 - PHP 8.1
 - Laravel 10.x
 - MySQL 8.0
-- Redis (for caching)
-- Laravel Sanctum (API authentication)
 - Laravel Excel
 - Laravel Breeze
 
