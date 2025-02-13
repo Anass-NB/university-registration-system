@@ -156,8 +156,8 @@ A comprehensive web application for managing university professional course regi
 
 1. Clone the repository
 ```bash
-git clone https://github.com/Anass-NB/precandidature-pfe.git
-cd precandidature-pfe
+git clone https://github.com/Anass-NB/university-registration-system.git
+cd university-registration-system
 ```
 
 2. Install dependencies
@@ -206,32 +206,10 @@ php artisan serve
 npm run dev
 ```
 
-### Production Deployment
-
-1. Configure production environment
-```bash
-composer install --optimize-autoloader --no-dev
-npm install --production
-```
-
-2. Optimize Laravel
-```bash
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-```
-
-3. Set up HTTPS
-```bash
-# Using Let's Encrypt
-certbot --nginx -d yourdomain.com
-```
 
 ## 🧪 Testing
 
 ### Available Test Suites
-- Unit Tests: `php artisan test --testsuite=Unit`
-- Feature Tests: `php artisan test --testsuite=Feature`
 - Browser Tests: `php artisan dusk`
 
 ### Test Accounts
@@ -266,30 +244,12 @@ Role: Student
 ## 📚 API Documentation
 
 ### Authentication
-```
-POST /api/auth/login
-POST /api/auth/register
-POST /api/auth/logout
-GET /api/auth/user
-```
+
 
 ### Courses
-```
-GET /api/courses
-POST /api/courses
-GET /api/courses/{id}
-PUT /api/courses/{id}
-DELETE /api/courses/{id}
-```
 
 ### Applications
-```
-GET /api/applications
-POST /api/applications
-GET /api/applications/{id}
-PUT /api/applications/{id}
-DELETE /api/applications/{id}
-```
+
 
 ## 🔧 Troubleshooting
 
