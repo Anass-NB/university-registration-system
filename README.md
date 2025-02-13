@@ -1,39 +1,169 @@
-# Registration System for University Professional License Courses
+# 🎓 University Professional License Course Registration System
+[![Laravel](https://img.shields.io/badge/Laravel-10.0-FF2D20?style=flat&logo=laravel)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.1-777BB4?style=flat&logo=php)](https://php.net)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat&logo=mysql)](https://mysql.com)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-A comprehensive web application for managing university professional  course registrations, built with Laravel, PHP, MySQL, and modern frontend technologies.
+A comprehensive web application for managing university professional course registrations, built with Laravel, PHP, MySQL, and modern frontend technologies.
+
+## 📑 Table of Contents
+- [Features](#-features)
+- [System Requirements](#-system-requirements)
+- [Technologies](#-technologies-used)
+- [Installation](#️-installation)
+- [Testing](#-testing)
+- [API Documentation](#-api-documentation)
+- [Mobile Support](#-mobile-support)
+- [Contributing](#-contributing)
+- [Authors](#-authors)
+- [License](#-license)
+- [Screenshots](#-screenshots)
+- [Troubleshooting](#-troubleshooting)
+- [Acknowledgments](#-acknowledgments)
 
 ## 🚀 Features
 
 ### 👨‍🎓 For Students
-- Account creation and authentication
-- Profile management
-- Course browsing and application
-- Real-time application status tracking
-- Document upload system
+
+#### Account Management:
+- Create and authenticate user accounts with email verification
+- Manage personal profiles with detailed information
+- Upload necessary documents (e.g., Baccalaureate, CV, Diploma, Transcripts)
+- Reset passwords and manage security settings
+- View application history and status timeline
+
+#### Course Applications:
+- Browse available professional license courses with advanced filtering
+- View detailed information about each course (duration, requirements, schedule)
+- Submit applications for multiple courses with document attachments
+- Track application status with email notifications
+- Cancel or modify applications within the designated timeframe
+- Download application receipts and confirmations
+
+#### Notifications:
+- Receive real-time updates on application status
+- Get email and SMS notifications about exam schedules and locations
+- Custom notification preferences management
+- Calendar integration for important dates
 
 ### 👨‍💼 For Administrators
-- Comprehensive dashboard
-- Course and training management
-- Teacher account management
-- Competition room assignment
-- Excel report generation and management
 
-### 👨‍🏫 For Teachers
-- Student list management
-- Advanced filtering system
-- Excel report generation
-- Application review system
+#### Dashboard:
+- Real-time statistics and analytics visualization
+- Interactive charts showing application trends
+- Geographic distribution of applicants
+- Course popularity metrics
+- Profile completion rate tracking
+- Custom report generation
+
+#### Course Management:
+- Create and manage professional license courses
+- Set application deadlines and requirements
+- Assign teachers and manage course capacity
+- Schedule exams and manage locations
+- Generate course-specific reports
+- Manage course prerequisites and requirements
+
+#### Teacher Management:
+- Comprehensive teacher profile management
+- Course assignment and workload tracking
+- Performance analytics and reporting
+- Bulk teacher account creation via CSV
+- Access control and permission management
+
+#### Application Management:
+- Advanced application filtering and sorting
+- Batch application processing
+- Automated eligibility checking
+- Excel import/export functionality
+- Document verification system
+- Room assignment optimization
+
+#### Communication:
+- Automated email and SMS notification system
+- Custom notification templates
+- Bulk messaging capabilities
+- Communication history tracking
+- Emergency broadcast system
+
+### 👨‍🏫 For Teachers (Chefs de Filière)
+
+#### Application Review:
+- Advanced candidate filtering system
+- Automated scoring and ranking
+- Batch application processing
+- Document verification tools
+- Interview scheduling system
+- Application history tracking
+
+#### Reporting:
+- Custom report generation
+- Excel and PDF export options
+- Statistical analysis tools
+- Performance metrics tracking
+- Automated periodic reports
+- Data visualization tools
+
+#### Communication:
+- Direct messaging with candidates
+- Bulk notification system
+- Automated status updates
+- Interview scheduling
+- Document request system
+
+## 💻 System Requirements
+
+### Server Requirements
+- PHP >= 8.1
+- MySQL >= 8.0
+- Composer >= 2.0
+- Node.js >= 16.0
+- Apache/Nginx web server
+- SSL certificate for production
+
+### Supported Browsers
+- Chrome (last 3 versions)
+- Firefox (last 3 versions)
+- Safari (last 2 versions)
+- Edge (last 3 versions)
+
+### Recommended Server Specifications
+- CPU: 2+ cores
+- RAM: 4GB minimum
+- Storage: 20GB minimum
+- Network: 100Mbps minimum
 
 ## 🛠 Technologies Used
 
-- **Backend:** PHP 8.1, Laravel 10
-- **Frontend:** HTML5, CSS3, JavaScript, Bootstrap 5
-- **Database:** MySQL
-- **Authentication:** Laravel Breeze
-- **File Storage:** Laravel Storage
-- **Reporting:** Laravel Excel
+### Backend
+- PHP 8.1
+- Laravel 10.x
+- MySQL 8.0
+- Redis (for caching)
+- Laravel Sanctum (API authentication)
+- Laravel Excel
+- Laravel Breeze
+
+### Frontend
+- HTML5
+- CSS3/SASS
+- JavaScript/TypeScript
+- Bootstrap 5
+- Alpine.js
+- Livewire
+- Chart.js
+
+### DevOps & Tools
+- Git
+- Docker
+- Laravel Mix
+- PHPUnit
+- Jest
+- GitHub Actions
 
 ## ⚙️ Installation
+
+### Development Environment
 
 1. Clone the repository
 ```bash
@@ -61,11 +191,24 @@ DB_PORT=3306
 DB_DATABASE=your_database_name
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
+
+MAIL_MAILER=smtp
+MAIL_HOST=your_mail_host
+MAIL_PORT=587
+MAIL_USERNAME=your_mail_username
+MAIL_PASSWORD=your_mail_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=your_email
+MAIL_FROM_NAME="${APP_NAME}"
+
+SMS_PROVIDER=your_sms_provider
+SMS_API_KEY=your_sms_api_key
 ```
 
 5. Database setup
 ```bash
 php artisan migrate --seed
+php artisan storage:link
 ```
 
 6. Start the application
@@ -74,18 +217,44 @@ php artisan serve
 npm run dev
 ```
 
-## 🧪 Testing the Application
+### Production Deployment
+
+1. Configure production environment
+```bash
+composer install --optimize-autoloader --no-dev
+npm install --production
+```
+
+2. Optimize Laravel
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+3. Set up HTTPS
+```bash
+# Using Let's Encrypt
+certbot --nginx -d yourdomain.com
+```
+
+## 🧪 Testing
+
+### Available Test Suites
+- Unit Tests: `php artisan test --testsuite=Unit`
+- Feature Tests: `php artisan test --testsuite=Feature`
+- Browser Tests: `php artisan dusk`
 
 ### Test Accounts
 
-1. **Admin Account**
+#### Administrator
 ```
 Email: amine.abdellah@usms.test
 Password: password
 Role: Administrator
 ```
 
-2. **Teacher Accounts**
+#### Teachers
 ```
 Email: rachid.ait@usms.test
 Password: password
@@ -98,50 +267,93 @@ Role: Teacher/Enseignant
 Speciality: Mathématiques
 ```
 
-3. **Student Account**
+#### Student
 ```
 Email: Create new account
 Password: create new password
 Role: Student
 ```
 
-### Testing Flow
+## 📚 API Documentation
 
-1. **Admin Testing**
-   - Login 
-   - Access the admin dashboard
-   - Manage formations and teachers
-   - View all applications
-   - Send SMS notifications
-   - Generate reports
+### Authentication
+```
+POST /api/auth/login
+POST /api/auth/register
+POST /api/auth/logout
+GET /api/auth/user
+```
 
-2. **Teacher Testing**
-   - Login 
-   - View assigned formations
-   - Review student applications
-   - Generate class reports
-   - Manage student evaluations
+### Courses
+```
+GET /api/courses
+POST /api/courses
+GET /api/courses/{id}
+PUT /api/courses/{id}
+DELETE /api/courses/{id}
+```
 
-3. **Student Testing**
-   - Login using user@user.com or register a new account
-   - Complete your profile
-   - Browse available formations
-   - Submit applications
-   - Upload required documents
-   - Track application status
+### Applications
+```
+GET /api/applications
+POST /api/applications
+GET /api/applications/{id}
+PUT /api/applications/{id}
+DELETE /api/applications/{id}
+```
 
-### Important Notes
-- All test accounts use 'password' as the default password
-- Additional random accounts are generated through seeders
-- You can create new accounts through the registration system
+## 🔧 Troubleshooting
 
-## 📱 Mobile Responsiveness
-The application is fully responsive and works seamlessly on:
-- Desktop browsers
-- Tablets
-- Mobile devices
+### Common Issues
 
-## 👥 Authors
+1. Installation Problems
+```bash
+# Clear composer cache
+composer clear-cache
+
+# Remove vendor directory
+rm -rf vendor
+composer install
+
+# Clear Laravel cache
+php artisan config:clear
+php artisan cache:clear
+```
+
+2. Database Issues
+```bash
+# Reset database
+php artisan migrate:fresh --seed
+
+# Fix permission issues
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+```
+
+3. File Upload Issues
+```bash
+# Create storage link
+php artisan storage:link
+
+# Set proper permissions
+chmod -R 775 storage/app/public
+```
+
+## 👥 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Coding Standards
+- Follow PSR-12 coding standard
+- Write meaningful commit messages
+- Add tests for new features
+- Update documentation as needed
+
+## 👨‍💻 Authors
 
 - **EL JADI Soufiane** - [eljadi.souf@gmail.com](mailto:eljadi.souf@gmail.com)
 - **NABIL Anass** - [Anassnabil067@gmail.com](mailto:Anassnabil067@gmail.com)
