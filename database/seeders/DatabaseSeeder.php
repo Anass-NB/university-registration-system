@@ -23,10 +23,14 @@ class DatabaseSeeder extends Seeder
     //   "code_massar" => "L1294243",
     // ]);
 
-    $this->call(RegionSeeder::class);
-    $this->call(VilleSeeder::class);
-    $this->call(UserSeeder::class);
-
-
+    $this->call([
+      RegionSeeder::class,
+      VilleSeeder::class,
+      UserSeeder::class,
+      EnseignantSeeder::class,
+      FormationSeeder::class,
+      EtudiantsTableSeeder::class,
+      CandidaturesTablesSeeder::class
+    ]);
   }
 }

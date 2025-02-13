@@ -4,72 +4,99 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Config;
 
 class NotificationController extends Controller
 {
+    private $apiUrl;
+    private $apiKey;
+    private $originator;
 
-  public function index()
-  {
-    return view("pages.admin.notifications.index");
-  }
-
-  public function store(Request $request)
-  {
-    $request->validate([
-      'fichier_excel' => 'required|mimes:xlsx,xls,csv',
-    ]);
-    $file = $request->file('fichier_excel');
-    $data = Excel::toArray([], $file);
-    $telephones = [];
-    foreach ($data[0] as $row) {
-      array_push($telephones, strval($row[3]));
+    public function __construct()
+    {
+        $this->apiUrl = config('services.d7networks.url');
+        $this->apiKey = config('services.d7networks.key');
+        $this->originator = config('services.d7networks.originator');
     }
-    // return $telephones;
 
+    public function index()
+    {
+        return view("pages.admin.notifications.index");
+    }
 
-    $message = $request->message;
+    public function store(Request $request)
+    {
+        $request->validate([
+            'fichier_excel' => 'required|mimes:xlsx,xls,csv',
+            'message' => 'required|string|max:160'
+        ]);
 
-    $payload = [
-      "messages" => [
-        [
-          "channel" => "sms",
-          "recipients" => $telephones,
-          "content" => $message,
-          "msg_type" => "text",
-          "data_coding" => "text"
-        ]
-      ],
-      "message_globals" => [
-        "originator" => "ESTFBS",
-        "report_url" => "https://the_url_to_receive_delivery_report.com"
-      ]
-    ];
+        try {
+            $file = $request->file('fichier_excel');
+            $data = Excel::toArray([], $file);
+            $telephones = collect($data[0])->pluck(3)->map(fn($phone) => strval($phone))->toArray();
 
-    $curl = curl_init();
+            $payload = [
+                "messages" => [
+                    [
+                        "channel" => "sms",
+                        "recipients" => $telephones,
+                        "content" => $request->message,
+                        "msg_type" => "text",
+                        "data_coding" => "text"
+                    ]
+                ],
+                "message_globals" => [
+                    "originator" => $this->originator,
+                    "report_url" => config('services.d7networks.report_url')
+                ]
+            ];
 
-    curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://api.d7networks.com/messages/v1/send",
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => '',
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 0,
-      CURLOPT_FOLLOWLOCATION => true,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => 'POST',
-      CURLOPT_POSTFIELDS => json_encode($payload),
-      CURLOPT_HTTPHEADER => array(
-        'Content-Type: application/json',
-        'Accept: application/json',
-        'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoLWJhY2tlbmQ6YXBwIiwic3ViIjoiMzZkNWNlYzYtNjc3Ni00YzdhLTk2MGMtODRlYzY3MWE2NGJkIn0.So4HWR1Bo_0nb1Pkj7elUO_LDM6xnxKLABKwO60_TNw'
-      ),
-    ));
+            $response = $this->sendSMS($payload);
 
-    $response = curl_exec($curl);
+            if (!$response) {
+                throw new \Exception('Failed to send SMS');
+            }
 
+            toastr()->success('Les messages ont été envoyés avec succès');
+            return redirect()->route("notifications.index");
 
-    curl_close($curl);
-    toastr()->success('Les messages ont été envoyés avec succès');
+        } catch (\Exception $e) {
+            toastr()->error('Erreur lors de l\'envoi des messages: ' . $e->getMessage());
+            return back();
+        }
+    }
 
-    return redirect()->route("notifications.index");
-  }
+    private function sendSMS($payload)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+            CURLOPT_URL => $this->apiUrl,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode($payload),
+            CURLOPT_HTTPHEADER => [
+                'Content-Type: application/json',
+                'Accept: application/json',
+                'Authorization: Bearer ' . $this->apiKey
+            ],
+        ]);
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        if ($err) {
+            \Log::error('SMS API Error: ' . $err);
+            return false;
+        }
+
+        return $response;
+    }
 }

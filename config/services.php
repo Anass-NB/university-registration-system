@@ -31,4 +31,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'd7networks' => [
+        'url' => env('D7NETWORKS_API_URL', 'https://api.d7networks.com/messages/v1/send'),
+        'key' => env('D7NETWORKS_API_KEY'),
+        'originator' => env('D7NETWORKS_ORIGINATOR', 'ESTFBS'),
+        'report_url' => env('D7NETWORKS_REPORT_URL', 'https://your-report-url.com'),
+    ],
+
 ];

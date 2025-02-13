@@ -16,11 +16,24 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         DB::table("users")->delete();
-        $user = [
-          "name" => "Anass Nabil",
-          "email" => "anassnbbnnb@gmail.com",
-          "password" => Hash::make("anassnbbnnb@gmail.com")
-        ];
-        User::create($user);
+
+        // Create admin user
+        User::create([
+            'name' => 'Amine Abdellah',
+            'email' => 'amine.abdellah@usms.test',
+            'password' => Hash::make('password'),
+            'email_verified_at' => now(),
+            'remember_token' => \Str::random(10),
+        ]);
+
+        // Create some regular users
+        User::create([
+            'name' => 'taha scolarite',
+            'email' => 'taha.scolarite@usms.test',
+            'password' => Hash::make('password'),
+            'email_verified_at' => now(),
+            'remember_token' => \Str::random(10),
+        ]);
+
     }
 }
